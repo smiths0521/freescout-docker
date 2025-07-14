@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  freescout-db:
+    image: mariadb:10.5
+    container_name: freescout-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+      - freescout-db-data:/var/lib/mysql
+
+  freescout:
+    image: tiredofit/freescout
+    container_name: freescout
+    restart: unless-stopped
+    depends_on:
+      - freescout-db
+    environment:
+      DB_TYPE: ${DB_TYPE}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASS: ${ADMIN_PASS}
+      SITE_URL: ${SITE_URL}
+    ports:
+      - "8080:80"
+    volumes:
+      - freescout-data:/data
+
+volumes:
+  freescout-db-data:
+  freescout-data:
