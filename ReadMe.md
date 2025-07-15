@@ -36,11 +36,13 @@ cd freescout-docker
 ### 2. Create a `.env` File
 
 Create a `.env` file in the root directory (next to `docker-compose.yml`) and add your secure environment variables:
+```
 env
 DB_NAME=freescout
 DB_USER=freescoutuser
 DB_PASS=strongpassword
 DB_ROOT_PASS=rootpassword
+```
 
 > 🛡️ Use strong passwords — this file should **not be committed to GitHub**. It’s in `.gitignore` by default.
 
@@ -68,14 +70,12 @@ This will stop all containers but keep your persistent data safe.
 ---
 
 ## 📁 Project Structure
-
+```
 freescout-docker/
 ├── docker-compose.yml
-
 ├── .env             # Your secure config (excluded from Git)
-
 └── README.md
-
+```
 ---
 
 ## ✅ What This Project Covers
