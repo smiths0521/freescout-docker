@@ -71,7 +71,9 @@ This will stop all containers but keep your persistent data safe.
 
 freescout-docker/
 ├── docker-compose.yml
+
 ├── .env             # Your secure config (excluded from Git)
+
 └── README.md
 
 ---
